@@ -18,7 +18,7 @@
 
 
 
-<h1> "selam canım "</h1>
+<h1> "selam  "</h1>
 <?php
 echo  'furkan';
 print 'deneme print ';
@@ -33,7 +33,16 @@ adsasda*/
 ?>
 <h1> <?php  echo'html içi php kullanımı'?> </h1>
 <h2> <?='kısa kullanum echo ' ?> </h2>
+<?php
+//değişken deneme harf _ ile başlayabilir
+$var = " ilk değişken yazıldı";
+echo "bugun <b>$var</b> yaptık";
 
+//sabitler obje hariç tüm veri tipi tutulabilir türkç karakter içerebilir geleneksel olarak büyük harf kullanılır.
+define('İSİM','furkan');
+echo İSİM;
+//gettype() ile veri tipi öğrenilir, array [], obje $a = new stdClass();
+?>
 
 
 <style>
