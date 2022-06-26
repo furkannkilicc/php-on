@@ -95,12 +95,68 @@ do{
     echo $a1."dowhile<br>";
     $a1++;
 }while($a1 <=5);
+//fonksiyon tanımlama
+function topla($sayi1,$sayi2){ // default değer verebiliriz $sayi1=22 , $sayi2=3
+    return $sayi1 + $sayi2;
+}
+    echo  topla(1,15);
+// annoim fonk. ; ile bitirilir
+$carp = function ($s1,$s2){
+    return $s1*$s2;
+};
+echo "<br>".$carp(25,8);
+//array_map bütün dizi elemanlarını döndürmemizi sağlar , callback alır
+$dizi = [1,2,3,4];
+$dizi= array_map(function ($e){
+    return $e * 5 ;
+},$dizi);   // ilk parametre olarak anonim fonk.call back fonk olarak  aldık,bütün diziyi 2 ile çarpıp yeni bi arraya atadık
+print_r($dizi);
+// anonim fonksiyon
+$islemler = [
+  'topla'=>function($a,$b){return $a+$b;},
+    'cıkar'=>function($a,$b){return $a-$b;},
+    'carp'=>function($a,$b){return $a*$b;}
 
-
-
-
-
-
+];
+echo $islemler['topla'](55,3)."<br>";
+echo $islemler['carp'](55,3)."<br>";
+echo $islemler['cıkar'](55,3)."<br>";
+//recursive (özyineli) fonksiyon
+$categories = [
+        ['id'=>1,
+            'parent'=>0,
+            'name'=>'FrontEnd'],
+    ['id'=>2,
+        'parent'=>0,
+        'name'=>'Backend'],
+    ['id'=>3,
+        'parent'=>2,
+        'name'=>'PHP'],
+    ['id'=>4,
+        'parent'=>1,
+        'name'=>'VueJS'],
+    ['id'=>5,
+        'parent'=>2,
+        'name'=>'Laravel'],
+    ['id'=>6,
+        'parent'=>2,
+        'name'=>'NodeJS'],
+];
+function kategori($arr,$par=0){
+    $html="";
+    $html.="<ul>";
+    foreach ($arr as $value){
+        if($value['parent']== $par){
+            $html.="<li>";
+            $html.=$value['name'];
+            $html.=kategori($arr, $value['id']);
+            $html.="</li>";
+            }
+        }
+        $html.="</ul>";
+        return $html;
+        }
+    echo kategori($categories,$par=0);
 
 
 

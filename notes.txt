@@ -1,0 +1,19 @@
+
+RECURSIVE FONKSIYON LİSTE İÇİNDE
+
+function getCategory($arr, $par=0 ){
+    $html="";
+    $html.="<ul>";
+    foreach ($arr as $value){
+        if ($value['parent']==$par){
+        $html.="<li>";
+        $html.=$value['name'];
+        $html.=getCategory($arr,$value['id']);
+        $html.'</li>';
+        }
+    }
+    $html.="</ul>";
+
+    return $html;
+}
+echo getCategory($categories,$par=0);
