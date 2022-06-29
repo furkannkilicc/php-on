@@ -158,6 +158,169 @@ function kategori($arr,$par=0){
         }
     echo kategori($categories,$par=0);
 
+// static olarak tanımlarsak bi fonksiyonu değeri güncellenir ve o değerden devam ederiz.
+function say(){
+    static $sayi=0; // static olarak tanımlamazsak güncellemez, 0 ve 0 basar static olunca arttırma işlemi olur 0 1
+    echo "<h3> $sayi </h3>"; // php içinde html tag için tırnak içi alınır .
+    $sayi++;
+}
+say();
+say();
+
+//ÖNEMLİ : ERRORRLARI BASTIRMAK İÇİN TANIMLAMA :  error_reporting(E_ALL);
+error_reporting(E_ALL);
+//global olarak tnaımlı değişkeni kullanmak için etki alanı içinde "global " .. $isim; tagı kullanılır
+
+$isim='globaal isim';
+function isimyaz(){
+     global $isim;// global olmazsa içeride tanımlı olan çalışır ali. ama ali altta olursa globalden ali basılır
+    $isim='ali';
+    echo  $isim;
+
+}
+isimyaz();
+//echo "</br">;
+echo  PHP_EOL; // newline cross platform kullanılabilir.
+function ucgen($say){   //sayıyı aşağıda vereceğimiz için buraya değişken tanımladık.
+    for($i=0;$i<=$say;$i++){   //$say değişkeni içine yazılan sayıya kadar tekrar etmesi için bir döngü tanımladık.
+
+        $j=0;
+        while($j<=$i){  //döngüdeki sayıya ulaşana kadar aşağıdaki işlemi tekrarlaması için while açtık.
+            $j++;   //döngünün sonlanabilmesi için değişkeni 1 arttır dedik.
+            echo '*' ; // sıfır sayısına ulaşmak i.in sıfırla çarptık.
+
+        }
+        echo   "<br>"; // her while döngüsü bittiğinde çalışması için br tagini buraya ekledik.
+    }
+
+}
+ucgen(5);
+
+//dizeler
+$arr=[1,2,3];
+print_r($arr);
+$ayır= implode('ayıraç',$arr);// arrayi istediğimiz ayıraçla ayırdık.
+print_r($ayır);
+
+$newArr= explode('ayıraç',$ayır);//tersine çevirir ne ile ayırdıysak onu göndeririz.
+print_r($newArr);
+
+echo  count($newArr); //array elaman sayısını verir
+echo PHP_EOL;
+echo is_array($isim);//true, false  1  0
+
+//range() ile aralık tanımlayıp sayı yazabilirz
+$sayilar=range(1,4) ;// step ile 2 şer arttırdık
+shuffle($sayilar); // arrayi karıştırır sırasını S
+print_r($sayilar);
+echo    gettype($sayilar); // array döndürür range ile
+//array combine 2 ayrı diziyi anahtar value olarak eşler  aynı uzunlukta olmalı
+$harf=['a','b','c'];
+$harf2=['al','ver','ser','al','newKey'=>'YENI']; // newKey adlı valusu yeni olan değer oluşturduk
+$combine = array_combine($arr,$harf);
+print_r($combine);
+$ara= array_count_values($harf2);
+print_r($ara); //al 2 ver 1 .. olarak çıktı verir.
+//anahtar değer yer değiştirmek array_flip
+$değis=array_flip($harf);
+print_r($değis);// a. eleman 0 b. eleman 1 değerini alır
+$varmi=array_key_exists('a',$harf);//true dondurur ama flip yapıp tersini aldık false.
+var_dump($varmi);
+//array_map callback ve ilk değer olarak fonksiyon veya anonim fonk. verebiliriz 2. parametre dizimiz
+echo "<pre>";
+$sayilar2=range(1,10);
+$dizi= array_map(function ($e){
+return $e+2;
+},$sayilar2);
+print_r($dizi);
+
+//calback olacak fonksiyon dışarıda da tanımlanabilir
+function cube($sayi){
+    return $sayi*$sayi*$sayi;
+}
+$sayilar3=range(1,10);
+$sayilar2=range(1,10);
+$dizi= array_map('cube'
+,$sayilar2);
+print_r($dizi);
+
+//array_filter bütün elemanları döndürür filterlenmiş array döndürür
+
+ $cift= array_filter($sayilar2,function ($e){
+    return $e%2 == 0? $e:false;
+});
+print_r($cift);
+$tek=array_filter($sayilar3,function ($e){
+    return $e%2==1?$e:false;
+});
+print_r($tek);
+ $tek=array_merge($cift,$tek);//array birleştirme , birden cok olabilir
+ print_r($tek);
+
+ print_r(array_rand($hayvanlar,1));//arraydan random key alır
+
+$arrr=array_search('2',$arr);//needle value anlamomda samanlıkta iğne aramak  deyiminden, karşılaştığı ilk değerin yerini  basar.
+
+print_r(($arr));
+//in_array() değer mevcut mu diye bakar arrayde. true false
+//array_shift dizinin baslangıcından bir eleman çıkarır, birden fazla kullanılarak çıkartılabili
+//array_pop($dizi) sondan bi eleman çıkarır
+//array_slice($dizi,0,2 ) 0 dan başlar 2 eleman getirir.
+//array_sum() arrayın toplamı, array_
+//array_product() dizideki değerlein çarpımı,
+//array_push ($array, 'furkan','ali') array sonuna belli sayıda eleman ekler
+//sonuna eklemek istersek $array[]='ali' birşey yazmayınca sonuna ekler
+//array_unsift dizinin baslangıcına bir veya daha fazla eklememizi sağlar
+//array_keys tum anahtarları bir anahtar alt kümesinde döndürür.
+//array_unique() dizide yenilenen değerleri siler, array_values() tüm değerleri döndürür
+//current($dizi) dizinin ilk elamanını döndürür ve next () end() prev()  end () ile dolaşabiliriz
+//next ($dizi) echo prev($dizi) gibi. reset() dahili göstericinin ilk elemanını döndürür, current() ilki gösterir
+//extract () değerleri anahtara dönüştürür, değişken olarak kullanabiliriz
+$dizi=['bir'=>'ali','iki'=>'veli'];
+extract($dizi);
+echo $bir;// ali döndürür
+//asort() dizinin anahtar ve değerleri bozmadan küçükten büyüğe
+//arsort() ilişkiyi bozmadan büyükten küçüğe
+
+$diziX=[1=>0,51=>01,9=>03];
+ksort($diziX);
+print_r($diziX);
+//ksort anahtara göre küçükten büyüğe ,
+//krsort anahtara göre büyükten küçüğe
+
+//STRING FONKSİYONLARI
+//strlen verilen metnin uzunluğunu döndürür.// kaç byte oldugunu büyük harf 2 byte
+//mb_strlen tam olarak verir  ayrıda 'UTF-8' ile karakter setini de gönderebiliriz..
+//explode('-', $metin) metini - ile ayırdık array e atadık
+//array yaptığımız stringi tekrardan array yapmak için implode('$', $metin)
+//str_split($metim, 2) 2 li harflere böler ama byte düzgün olması için
+//mb_str_split(metin 2 ) 2 li boldu
+//ltrim(metin)  sol taraftaki boşluğu siler rtrim() sağındakini siler ikisini silmek için trim() hem sağ hem solu siler
+//substr(metin,1,10) baslangıc ve bitis değerini verdik 1. den basla 10 karakteri ver
+//strtolower() küçük harfe dönüştürür UTF-8 TÜRKÇE KARAKTERLER İÇİN
+//strupper() metini büyütür problem çıkabilir o yüzden mb_strtolower(metin,'UTF-8') kullanılabilir  VE CHAR SET TANIMLANABİLİR(mb(multi byte))
+//ucfirst() 'uppercase first' metnin ilk harfi  ucwords()  her kelimenin ilk harfini büyütür.
+//str_replace(kaynamk,hedef,metin)
+$metin="İstanbul şehir caddesi";
+$metin= str_replace('caddesi','sokağı',$metin); //İstanbul şehir sokağı döndürür
+echo $metin;
+//nl2br($metin) 'nl to br '  \n  i <br> ile değiştiriyo \n html tagı olmadan ( pre tagı içinde olmazsa) çalışmaz
+$metin="İstanbul şehir \n caddesi";
+echo nl2br($metin); //bu şekilde alta atabiliriz
+//md5($metin) sha1($metin) şifreleme algoritması
+echo    md5($metin)."</br>";// şifremizi basar
+//strstr() bir metinde belirtilen karakterden sonrasını döndürür
+$metin='Lorem ipsulum dolar sit amet';
+echo strstr($metin,'sit'); //sit  de dahil sit amet döndürür
+//NEXT FORM
+
+
+
+
+
+
+
+
 
 
 
