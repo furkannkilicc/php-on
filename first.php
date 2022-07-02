@@ -12,6 +12,26 @@
 <script>
     alert('js kodu php içinde  ');
 </script>
+
+<!-- FORM İŞLEMLERİ action nereye method hangi method ile post get  -->
+<form action="post.php" method="post">
+    <input type="text" name="isim" placeholder="isim">
+    <input type="text" name="soyisim" placeholder="Soy isim">
+    <button type="submit">ONAYLA </button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
 
@@ -45,10 +65,10 @@ $a = true;
 //var_dump(); değişkenle ilgili içerik ve bilgi
 var_dump($a); // bool true
 //$a  <=> mekik (spaceship)  0 1  -1 değerlerini alır , eşt old  0 büyük 1 küçük -1 döndürür
-//birleştirmek için $a.$b  nokta ile yaparız   += vs yanında .= ile birleştirme yapılabilir
+//birleştirmek için $a.$b  ntamamta ile yaparız   += vs yanında .= ile birleştirme yapılabilir
 $b='b değişkeni';
 $c = ' c değişkeni ';
-//if(statement){echo .. }, elseif(){},else{} tek komut var ise paranteze gerek yok  diğer kullanun if(state): endif; { a gerek yok
+//if(statement){echo .. }, elseif(){},else{} tek komut var ise paranteze gerek ytamam  diğer kullanun if(state): endif; { a gerek ytamam
 //ternary op  ? : js ile aynı,        echo $a ==7 ? 'eşit' : 'değil';
 //switch($a){
 //case 1:
@@ -312,17 +332,7 @@ echo    md5($metin)."</br>";// şifremizi basar
 //strstr() bir metinde belirtilen karakterden sonrasını döndürür
 $metin='Lorem ipsulum dolar sit amet';
 echo strstr($metin,'sit'); //sit  de dahil sit amet döndürür
-//NEXT FORM
-
-
-
-
-
-
-
-
-
-
+//$_POST SUPER GLOBAL DEĞİŞKEN İLE HTML OLUŞTURALN FORMDA  GÖNDERİLEN POSTLAR BURDA DEPOLANIYOR.
 
 
 ?>
