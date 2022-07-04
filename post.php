@@ -4,3 +4,4 @@ print_r($_POST);//FORMDA GÖNDERİLEN POST METODLARI  İLE VERİLER BURDA TUTULU
 //htmlspecialchars(trim($e) ) gelen html kodlarını engelleme için sunucuda çalışmaz tekrardan html tagın çalıstıgını görmek için
 // htmlspecialcharsdecode kullanılır , strip_tags html etiketleirni tamamen temizlemeye yarıyor
 //$_REQUEST ile hem get hem post alabiliriz ve cookie ye ulaşabiliriz
+
