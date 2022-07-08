@@ -20,4 +20,4 @@ $db->query('SET CHARACTER_SET_CONNECTION=utf8mb4');//bağlantımzıın karakter 
 }
 $select= $db->query("SELECT * FROM  testdb.testdb");
 
-//echo  phpinfo();
+//echo  phpinfo(); ç
