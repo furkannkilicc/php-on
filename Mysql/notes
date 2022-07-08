@@ -1,6 +1,0 @@
-cmd den bağlanmak için : mysql -u root -p
-sonra şifre girilir .
-
-# ile comment atılır
-ALTER  DATABASE testdb; // güncelleme yapmak için
-   USE testdb; ile db seçeriz

@@ -1,0 +1,58 @@
+cmd den bağlanmak için : mysql -u root -p
+sonra şifre girilir .
+
+*******utf8mb4_general_ci	 karşılaştırma
+
+# ile comment atılır
+ALTER  DATABASE testdb; // güncelleme yapmak için
+   USE testdb; ile db seçeriz
+   •veri oluştururken hafızada az alan kaplasın diye uygun olan kullanılmalı TINYINT , SMALLINT, MEDIUMINT,INT,BIGINT,
+   • FLOAT(4BYTE),DOUBLE(8 BYTE), DECIMAL(DEĞİSİKLİK GÖSTERİR) GENELDE PARASALDA DECIMAL
+   •CHAR (2) 2 BYTE TUTAR"SABİT KARAKTERLERİ TUTAR,"
+   •VARCHAR(DEĞİŞKEN UZUNLUKTA TUTAR) MİNIMUM 2 BYTE TUTAR
+   •TINYTEXT,TEXT,MEDIUMTEXT,LONGTEXT,
+   •ENUM('a','b')  ATADIGIMIZ YA A YA DA B ÇALISTIRILIR (STRING)
+   •SET ENUMA BENZER
+   •DATE "YYYY-MM-DD " BİCİMİNDE GÖSTERİR
+   •DATETIME "YYYY-MM-DD  HH:MM:SS" ŞEKLİNDE GÖSTERİR
+   •TIMESTAMP 1970 TEN 2037 YILINA KADAR ZAMANI TUTAR "YYY-MDD HH:MM:SS TUTAR"
+   •TIME "SADECE SAAT VERİSİ TUTAR" HH:MM:SS TUTAR
+   • YEAR 2 VEYA 4 BASAMAKLI YIL TUTAR 1901-2155 VEYA 70 69 ARASI DEĞER
+    • EXPLAIN users(table name); detaylı table çıktısı verir
+    •RENAME TABLE users TO KULLANICILAR;//TABLE ADI DEĞİŞTİRMEK İÇİN
+    • ALTER TABLE kullanicilar ADD COLUMN grup VARCHAR(100); YENİ KOLON İÇİN
+    •ALTER TABLE kullanicilar CHANGE sehir (değiştirlecek kolon adı) xyz DATETIME
+    •DROP TABLE kullanicilar; tabloyu tamamen sileriz
+    •id  oto artması için AUTO_INCREMENT,
+    •varchar a default değer atamak için NOT NULL DEFAULT ' DEĞER GİRİLMEDİ'
+    •INT(5) BOYUTUNU BELİRTİR AMA SADECE ZEROFILL UNSGİNED İÇİNDİR BOŞ OLAN YERLERİ 0 İLE DOLDURUR YOKSA BİR FARKI YOK
+    • SET @@lc_time_names='tr_TR';      SELECT DAYNAME('2022-07-19')    türkçe olarak bu tarihin gününü verecek builtin fonksiyon
+    • SELECT NOW(); BUGUNUN TARİHİNİ VERİR  SELECT DAYNAME(NOW()) İLE GÜNÜN İSMİNİ ALABİLİRİZ
+    • SELECT 1*3 ; // 3 VERİR
+    •SELECT IF (100<300, 'dogru','yanlis')
+    •SELECT LAST_DAY(NOW()) / AYIN SON GUNUNU DONDURUR
+    • INSERT INTO kullanicilar SET user_name='furkan', user_surname='kilic';
+    •SELECT *, CONCAT(user_name,' ',user_surname) as user_fullname FROM kullanicilar ; 2 kolondan yeni kolon
+    •UPDATE kullanicilar SET user_name ='ali' WHERE id=5; where kullanılmazsa hepsini değiştirir.
+    •DELETE FROM kullanicilar WHERE id  = 5;  // kullanici silindi
+    •count ı as ile bir seye esitlersek ve group by ile sıralarsak bunu bir koşula bağlamak için HAVING  kullanılır
+    •FIND_IN_SET (STR,STR_LIST) // SELECT * FROM kullanicilar WHERE FIND_IN_SET( 'D',REPLACE(grup,' ','')); BOŞLUK VARSA ONU SİLECEK FONKSİYON
+    •SELECT * ,IF(FIND_IN_SET('A',grup),'a grubunda var','Yok') as a_grubu FROM users;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
